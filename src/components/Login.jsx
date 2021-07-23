@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 // import { useFirebaseApp } from "reactfire";
 import { login, loginGoogle } from "../redux/loguinDucks";
 import { useForm } from "../hooks/useForm";
+import { Link } from 'react-router-dom';
 // import {firebase} from '../firebase/firebaseConfig'
 const Login = () => {
     const loginDispatch = useDispatch()
@@ -58,6 +59,9 @@ const Login = () => {
             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
             </div>
         </Form>
+        <Link to='products'>
+          productos
+        </Link>
         </div>
     )
 }
