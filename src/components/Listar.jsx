@@ -1,10 +1,16 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
+// import { listarProducto } from '../redux/productsDuck'
 
 const Listar = () => {
+    // const registroDispatch = useDispatch()
     const { productos } = useSelector(store => store.producto)
     console.log(productos)
+
+    // useEffect(() => {
+    //     registroDispatch(listarProducto())
+    // }, [])
     return (
         <div>
             <h1>Productos CampoStore</h1>
