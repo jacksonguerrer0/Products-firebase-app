@@ -7,7 +7,6 @@ import { useForm } from "../hooks/useForm";
 // import {firebase} from '../firebase/firebaseConfig'
 const Login = () => {
     const loginDispatch = useDispatch()
-    console.log(loginDispatch)
   
     const [formValues, handleInputChange] = useForm({
       email: '',

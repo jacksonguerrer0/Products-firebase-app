@@ -39,7 +39,7 @@ export const loginGoogle = () => (dispatch) =>{
 }
 //registro con nombre correo y contraseña
 export const registroEmailPasswordName = (email, password, name) => (dispatch) =>{
-    console.log("xdxdxd"+email+password+name);
+    console.log("Mi registro:"+email+password+name);
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(async ({user})=>{
@@ -49,6 +49,11 @@ export const registroEmailPasswordName = (email, password, name) => (dispatch) =
         .catch((error) => {
             console.log(error)
         })
+}
+
+//login con el email y password
+export const loginEmailAndPassword = () => () =>{
+    console.log("estoy ingresando con email y password")
 }
 
 

@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+
 var firebaseConfig = {
     apiKey: "AIzaSyAjvV1fWmqzyQU6sUp8gd1-DwSaCtVKMZQ",
     authDomain: "plantilla-firebase-crud.firebaseapp.com",
