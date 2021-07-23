@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { useForm } from '../hooks/useForm'
 // import {firebase} from '../firebase/firebaseConfig'
 import { registroEmailPasswordName } from '../redux/loguinDucks'
+import {Link} from 'react-router-dom'
+
 const Register = () => {
     const registerDispatch = useDispatch()
     console.log(registerDispatch)
@@ -58,6 +60,7 @@ const Register = () => {
             Registrarse
             </Button>
             </Form>
+            <Link to='/login'>Login</Link>
         </div>
     )
 }

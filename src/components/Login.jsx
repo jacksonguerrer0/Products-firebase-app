@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 // import { useFirebaseApp } from "reactfire";
 import { login, loginGoogle } from "../redux/loguinDucks";
 import { useForm } from "../hooks/useForm";
-import {firebase} from '../firebase/firebaseConfig'
+// import {firebase} from '../firebase/firebaseConfig'
 const Login = () => {
     const loginDispatch = useDispatch()
     console.log(loginDispatch)
