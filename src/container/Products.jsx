@@ -26,6 +26,7 @@ const Products = () => {
     useEffect(() => {
         registroDispatch(listarProducto())
     }, [])
+    
     return (
         <div>
             <h1>CampoStore</h1>
