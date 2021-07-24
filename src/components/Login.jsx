@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 // import { useFirebaseApp } from "reactfire";
-import { login, loginEmailAndPassword, loginGoogle } from "../redux/loguinDucks";
+import {  loginEmailAndPassword, loginGoogle } from "../redux/loguinDucks";
 import { useForm } from "../hooks/useForm";
 import { Link } from 'react-router-dom';
 // import {firebase} from '../firebase/firebaseConfig'
