@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React  from 'react'
 import { Form, Button} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import Listar from '../components/Listar';
 import { useForm } from '../hooks/useForm';
-import {  listarProducto, registroProducto } from '../redux/productsDuck';
+import {  registroProducto } from '../redux/productsDuck';
 
 const Products = () => {
     const dispatch = useDispatch()
