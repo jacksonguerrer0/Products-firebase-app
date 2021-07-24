@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from 'react-bootstrap'
-import {  useSelector } from 'react-redux'
-// import { listarProducto } from '../redux/productsDuck'
+import {  useDispatch, useSelector } from 'react-redux'
+import { listarProducto } from '../redux/productsDuck'
 
 const Listar = () => {
-    // const registroDispatch = useDispatch()
-    const { productos } = useSelector(store => store.producto)
-    console.log(productos)
+    const dispatch = useDispatch()
+    const {productos} = useSelector(store => store.producto)
+   // const { productos } = useSelector(store => store.producto)
+    // const producto = useSelector(store => store)
+    useEffect(() => {
+        dispatch(listarProducto())
+    }, [dispatch])
 
-    // useEffect(() => {
-    //     registroDispatch(listarProducto())
-    // }, [])
     return (
         <div>
+            <button onClick={()=> dispatch(listarProducto())}>Listar Producto</button>
             <h1>Productos CampoStore</h1>
             <Table striped bordered hover>
                 <thead>
@@ -25,18 +27,15 @@ const Listar = () => {
                 </thead>
                 <tbody>
                     {
-                        productos
-                        ?productos.map(ele => (
-                            <tr key={ele.id}>
+                        
+                        productos && productos.map(ele => (
+                            <tr key={ele.id + ele.nombre + ele.precio + ele.vendedor}>
                                 <td>{ele.id}</td>
                                 <td>{ele.nombre}</td>
                                 <td>{ele.precio}</td>
                                 <td>{ele.vendedor}</td>
                             </tr>
                         ))
-                        :<tr key="sinProductos">
-                            <td>No hay productos</td>
-                        </tr>
                     }
                 </tbody>
             </Table>

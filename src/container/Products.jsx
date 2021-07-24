@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Button} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import Listar from '../components/Listar';
 import { useForm } from '../hooks/useForm';
-import {  registroProducto } from '../redux/productsDuck';
+import {  listarProducto, registroProducto } from '../redux/productsDuck';
 
 const Products = () => {
-    const registroDispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const [formValues, handleInputChange, reset] = useForm({
         id: "",
@@ -18,11 +18,10 @@ const Products = () => {
 
     const handleRegistroSubmit = (e) => {
         e.preventDefault()
-        registroDispatch(registroProducto(id, nombre, precio, vendedor))
+        dispatch(registroProducto(id, nombre, precio, vendedor))
         reset()
     }
-
-
+ 
     return (
         <div>
             <h1>CampoStore</h1>

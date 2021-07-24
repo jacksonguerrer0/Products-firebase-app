@@ -4,20 +4,22 @@ import types from "./types/types";
 
 
 //reducer 
-const productReducer = (state = [], action) => {
+const productReducer = (state = {productForm: {}, productos:[]}, action) => {
     switch (action.type) {
         case types.registrar:
             return{
-                id: action.payload.id,
+                ...state,
+                productForm:{id: action.payload.id,
                 nombre: action.payload.nombre,
                 precio: action.payload.precio,
-                vendedor: action.payload.vendedor
+                vendedor: action.payload.vendedor}
             }
         case types.listar:
             return{
                 ...state,
                 productos: [...action.payload]
             }
+
         default:
             return state;
     }
@@ -38,10 +40,9 @@ export const registroProducto = (id, nombre, precio, vendedor) => async (dispatc
     }
     //Agrega el objeto en la base de datos fireStore
     await db.collection('/Productos').add(nuevoProducto)
-
-
-
+    console.log("subido")
     dispatch(registro(id,nombre,precio,vendedor));
+    await dispatch(listarProducto())
 }
 
 //sincronica
@@ -59,14 +60,14 @@ export const registro = (id,nombre, precio, vendedor) =>{
 export const listarProducto = () => {
     return async (dispatch) => {
         const data = await db.collection('/Productos').get();
+        console.log("obtendio")
         const producto = []
-
         //para extraer la data que necesito
-        data.forEach(element => (
+        data.forEach(element => {
             producto.push({
                 ...element.data()
             })
-        ));
+        });
         dispatch(listar(producto))
     }
 }
