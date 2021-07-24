@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 // import { useFirebaseApp } from "reactfire";
-import { login, loginGoogle } from "../redux/loguinDucks";
+import { login, loginEmailAndPassword, loginGoogle } from "../redux/loguinDucks";
 import { useForm } from "../hooks/useForm";
 import { Link } from 'react-router-dom';
 // import {firebase} from '../firebase/firebaseConfig'
@@ -22,7 +22,8 @@ const Login = () => {
   
     const handleInputSubmit = async (e) =>{
       e.preventDefault()
-      loginDispatch(login(email, password))
+      //inicio de sedion con ...
+      loginDispatch(loginEmailAndPassword(email, password))
       //crea un nuevo usuario
     }
   

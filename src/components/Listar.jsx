@@ -6,15 +6,13 @@ import { listarProducto } from '../redux/productsDuck'
 const Listar = () => {
     const dispatch = useDispatch()
     const {productos} = useSelector(store => store.producto)
-   // const { productos } = useSelector(store => store.producto)
-    // const producto = useSelector(store => store)
+
     useEffect(() => {
         dispatch(listarProducto())
     }, [dispatch])
 
     return (
         <div>
-            <button onClick={()=> dispatch(listarProducto())}>Listar Producto</button>
             <h1>Productos CampoStore</h1>
             <Table striped bordered hover>
                 <thead>

@@ -1,8 +1,12 @@
 const types = {
     login:'login',
-    register: 'register',
+    logout: 'logout',
+
     registrar: 'registrar',
-    listar: 'listar'
+    listar: 'listar',
+
+    uiSetError: 'uiSetError',
+    uiRemoveError: 'uiRemoveError'
 }
 
 export default types
