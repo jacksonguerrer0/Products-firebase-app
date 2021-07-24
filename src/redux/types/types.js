@@ -6,7 +6,10 @@ const types = {
     listar: 'listar',
 
     uiSetError: 'uiSetError',
-    uiRemoveError: 'uiRemoveError'
+    uiRemoveError: 'uiRemoveError',
+
+    uiStartLoading: 'uiStartLoading',
+    uiRemoveLoading: 'uiRemoveLoading'
 }
 
 export default types

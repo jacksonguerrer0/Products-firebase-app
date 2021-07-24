@@ -1,14 +1,19 @@
 import React from 'react'
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { useFirebaseApp } from "reactfire";
 import {  loginEmailAndPassword, loginGoogle } from "../redux/loguinDucks";
 import { useForm } from "../hooks/useForm";
 import { Link } from 'react-router-dom';
 // import {firebase} from '../firebase/firebaseConfig'
+
+
 const Login = () => {
     const loginDispatch = useDispatch()
-  
+    const {loading} = useSelector(store => store.ui)
+    console.log(loading)
+
+
     const [formValues, handleInputChange] = useForm({
       email: '',
       password: ''
@@ -19,7 +24,8 @@ const Login = () => {
   
     // const firebase = useFirebaseApp()
     // console.log(firebase)
-  
+
+
     const handleInputSubmit = async (e) =>{
       e.preventDefault()
       //inicio de sedion con ...
@@ -53,15 +59,15 @@ const Login = () => {
             value={password}
             onChange={handleInputChange} />
             </Form.Group>
-            <Button variant="primary" type="submit" >
+            <Button variant="primary" type="submit" disabled={loading}>
             Enviar
             </Button>
             <div onClick={handleLoginGoogle}>
             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
             </div>
         </Form>
-        <Link to='products'>
-          productos
+        <Link to='/auth/register'>
+          ¿No tienes ceunta?
         </Link>
         </div>
     )

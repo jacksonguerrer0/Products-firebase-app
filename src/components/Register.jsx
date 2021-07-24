@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from '../hooks/useForm'
 // import {firebase} from '../firebase/firebaseConfig'
 import { registroEmailPasswordName, setError } from '../redux/registerDucks'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import validator from 'validator'
 
 const Register = () => {
+    const history = useHistory()
     const registerDispatch = useDispatch()
     const { msjError } = useSelector(store => store.ui)
     const [formValues, handleInputChange, reset] = useForm({
@@ -21,6 +22,7 @@ const Register = () => {
         if (formValidate()){
             registerDispatch(registroEmailPasswordName(email,password,name))
             reset()
+            history.push('/login')
         }
     }
     const handleValidateChange = (e) => {

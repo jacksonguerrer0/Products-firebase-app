@@ -1,7 +1,7 @@
 // constantes
 import types from "./types/types";
 import { firebase } from '../firebase/firebaseConfig'
-import { login } from "./loguinDucks";
+// import { login } from "./loguinDucks";
 
 const initialState = {
     loading: false,
@@ -19,6 +19,14 @@ const registerReducer = (state=initialState, action) => {
                 ...state,
                 msjError: null
             }
+        case types.uiStartLoading:
+            return {
+                ...state, loading: true
+            }
+        case types.uiRemoveLoading:
+            return{
+                ...state, loading: false
+            }
         default:
             return state;
     }
@@ -34,7 +42,6 @@ export const registroEmailPasswordName = (email, password, name) => (dispatch) =
         .then(async ({user})=>{
             await user.updateProfile({displayName: name});
             console.log(user)
-            dispatch(login(user.uid, user.email))
         })
         .catch((error) => {
             console.log(error)
@@ -50,5 +57,15 @@ export const setError = (error) =>{
 export const removeError = () => {
     return {
         type: types.uiSetError
+    }
+}
+export const uiStartLoading = () =>{
+    return {
+        type: types.uiStartLoading
+    }
+}
+export const uiRemoveLoading = () => {
+    return {
+        type: types.uiRemoveLoading
     }
 }

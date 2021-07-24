@@ -3,6 +3,7 @@ import { Form, Button} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import Listar from '../components/Listar';
 import { useForm } from '../hooks/useForm';
+import { eventLogout } from '../redux/loguinDucks';
 import {  registroProducto } from '../redux/productsDuck';
 
 const Products = () => {
@@ -22,9 +23,15 @@ const Products = () => {
         reset()
     }
  
+
+    // cerrar sesion
+    const handleLogout = () => {
+        dispatch(eventLogout())
+    }
     return (
         <div>
             <h1>CampoStore</h1>
+            <button onClick={handleLogout}>Logout</button>
             <Form onSubmit={handleRegistroSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicId">
                     <Form.Label>Id</Form.Label>
