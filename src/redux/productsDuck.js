@@ -1,25 +1,23 @@
 //constantes 
 import { db } from "../firebase/firebaseConfig";
+import { fileUpload } from "../helpers/fileUpload";
+import { loadNotes } from "../helpers/loadNotes";
 import types from "./types/types";
 
 
 //reducer 
-const productReducer = (state = {productForm: {}, productos:[]}, action) => {
+const productReducer = (state = {card: []}, action) => {
     switch (action.type) {
-        case types.registrar:
+        case types.cardAddNew:
             return{
                 ...state,
-                productForm:{id: action.payload.id,
-                nombre: action.payload.nombre,
-                precio: action.payload.precio,
-                vendedor: action.payload.vendedor}
+                card: [action.payload, ...state.card]
             }
-        case types.listar:
-            return{
-                ...state,
-                productos: [...action.payload]
-            }
-
+            case types.cardLoad:
+                return {
+                    ...state,
+                    card: [...action.payload]
+                }
         default:
             return state;
     }
@@ -29,53 +27,55 @@ export default productReducer
 
 //actions
 //asincronica
-
-export const registroProducto = (id, nombre, precio, vendedor) => async (dispatch) => {
-    console.log(id, nombre, precio, vendedor);
-    const nuevoProducto = {
-        id,
-        nombre, 
-        precio, 
-        vendedor
-    }
-    //Agrega el objeto en la base de datos fireStore
-    await db.collection('/Productos').add(nuevoProducto)
-    console.log("subido")
-    dispatch(registro(id,nombre,precio,vendedor));
-    await dispatch(listarProducto())
-}
-
 //sincronica
-export const registro = (id,nombre, precio, vendedor) =>{
-    return {
-        type: types.registrar,
-        payload: {
-            id, nombre, precio, vendedor
+// 
+export const CardNew = (card,file) => {
+    return async (dispatch, getSate) => {
+        let fileUrl=[]
+        const uid = getSate().auth.uid
+      
+        try {
+            fileUrl = await fileUpload(file)
+        } catch (error) {
+            fileUrl = []
+            console.log(error)
         }
+
+        const newCard = {
+            id: card.id,
+            nombre: card.nombre,
+            precio: card.precio,
+            vendedor: card.vendedor,
+            url: fileUrl
+        }
+
+        const docRef = await db.collection(`${uid}/Card/data`).add(newCard)
+        // dispatch(addNewCard(docRef.id, newCard))
+        console.log(docRef)
     }
 }
 
-//Listar productos, obteneindo de fireStore
-//asincrona
-export const listarProducto = () => {
+
+export const addNewCard = (id, newCard) => ({
+    type: types.cardAddNew,
+    payload: {
+    id, ...newCard
+    }
+})
+
+
+// Listar productos, obteneindo de fireStore
+// asincrona
+export const ListarCard = (uid) => {
     return async (dispatch) => {
-        const data = await db.collection('/Productos').get();
-        console.log("obtendio")
-        const producto = []
-        //para extraer la data que necesito
-        data.forEach(element => {
-            producto.push({
-                ...element.data()
-            })
-        });
-        dispatch(listar(producto))
+        const cards = await loadNotes(uid)
+        dispatch(setNote(cards))
     }
 }
 
-//sincronica
-export const listar = (productos) => {
+export const setNote = (cards) => {
     return {
-        type: types.listar,
-        payload: productos
+        type: types.cardLoad,
+        payload: cards
     }
 }

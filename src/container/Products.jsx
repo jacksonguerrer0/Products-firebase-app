@@ -4,11 +4,11 @@ import { useDispatch } from 'react-redux';
 import Listar from '../components/Listar';
 import { useForm } from '../hooks/useForm';
 import { eventLogout } from '../redux/loguinDucks';
-import {  registroProducto } from '../redux/productsDuck';
+import {  CardNew } from '../redux/productsDuck';
 
 const Products = () => {
-    const dispatch = useDispatch()
-
+    let dispatch = useDispatch()
+    let file = []
     const [formValues, handleInputChange, reset] = useForm({
         id: "",
         nombre: "",
@@ -17,17 +17,23 @@ const Products = () => {
     })
     const {id, nombre, precio, vendedor} = formValues;
 
-    const handleRegistroSubmit = (e) => {
+    // obtener file
+    const handleFileChange = (e) => {
+        file = e.target.files[0];
+        console.log("url", file)
+    }
+
+    const handleRegistroSubmit = async (e) => {
         e.preventDefault()
-        dispatch(registroProducto(id, nombre, precio, vendedor))
+        dispatch(CardNew(formValues, file))
         reset()
     }
  
-
     // cerrar sesion
     const handleLogout = () => {
         dispatch(eventLogout())
     }
+
     return (
         <div>
             <h1>CampoStore</h1>
@@ -67,6 +73,16 @@ const Products = () => {
                         name="vendedor"
                         onChange={handleInputChange}
                         value={vendedor}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicTelefono">
+                    <Form.Label>Foto del producto</Form.Label>
+                    <br />
+                    <Form.Control
+                        type="file"
+                        name="file"
+                        onChange={handleFileChange}
+                        // value={file}
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit">

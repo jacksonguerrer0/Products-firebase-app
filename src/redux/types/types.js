@@ -9,7 +9,15 @@ const types = {
     uiRemoveError: 'uiRemoveError',
 
     uiStartLoading: 'uiStartLoading',
-    uiRemoveLoading: 'uiRemoveLoading'
+    uiRemoveLoading: 'uiRemoveLoading',
+
+
+    cardAddNew: '[Card] New cards',
+    cardActive: '[Card] Set note active',
+    cardLoad: '[Card] Load card',
+    cardUpdate: '[Card] Update card',
+    cardDelete: '[Card] New card',
+    cardLogoutClean: '[Card] Logout ',
 }
 
 export default types

@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Listar /> Comprobar === longitud array card 1`] = `
+<div>
+  <h1>
+    Productos CampoStore
+  </h1>
+  <ForwardRef
+    bordered={true}
+    hover={true}
+    striped={true}
+  >
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Imagen
+        </th>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Precio
+        </th>
+        <th>
+          Vendedor
+        </th>
+        <th>
+          Accion
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="product"
+        key="1"
+      >
+        <td>
+          1
+        </td>
+        <td>
+          <img
+            alt=""
+            src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
+            style={
+              Object {
+                "width": "100px",
+              }
+            }
+          />
+        </td>
+        <td>
+          Piña
+        </td>
+        <td>
+          23422
+        </td>
+        <td>
+          Jackson
+        </td>
+        <td>
+          <button>
+            Editar
+          </button>
+          <button>
+            Eliminar
+          </button>
+        </td>
+      </tr>
+      <tr
+        className="product"
+        key="2"
+      >
+        <td>
+          2
+        </td>
+        <td>
+          <img
+            alt=""
+            src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
+            style={
+              Object {
+                "width": "100px",
+              }
+            }
+          />
+        </td>
+        <td>
+          Sandia
+        </td>
+        <td>
+          23422
+        </td>
+        <td>
+          Jorge
+        </td>
+        <td>
+          <button>
+            Editar
+          </button>
+          <button>
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </ForwardRef>
+</div>
+`;

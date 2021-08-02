@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute'
 import Register from '../components/Register'
 import Login from '../components/Login'
 import PublicRoute from './PublicRoute'
+import { ListarCard } from '../redux/productsDuck'
 
 
 const Routes = () => {
@@ -21,6 +22,7 @@ const Routes = () => {
             if(user?.uid){
                 dispatch(login( user.uid, user.email))
                 setIsLoggedIn(true)
+                dispatch(ListarCard(user.uid))
             }
             else{
                 setIsLoggedIn(false)
