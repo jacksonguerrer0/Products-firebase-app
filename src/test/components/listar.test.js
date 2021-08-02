@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Listar, { cantidad } from '../../components/Listar'
+import Listar, { autor } from '../../components/Listar'
 // import { useSelector } from 'react-redux'
 
 describe('Test <Listar />', () => {
@@ -27,7 +27,7 @@ describe('Test <Listar />', () => {
         expect(wrapper.find(`.product`).length).toBe(card.length)
     })
     test('Validar titulo', () => {
-        expect(cantidad()).toEqual({nombre: 'jackson'})
+        expect(autor()).toEqual({nombre: 'jackson'})
     })
     
 })

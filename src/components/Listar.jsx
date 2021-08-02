@@ -3,6 +3,12 @@ import { Table } from 'react-bootstrap'
 import {  useDispatch, useSelector } from 'react-redux'
 import { listarProducto } from '../redux/productsDuck'
 
+const autor = () => ({
+    nombre: 'jackson'
+})
+export { cantidad }
+
+
 const Listar = ({defaultCard = []}) => {
 
     // const { card } = useSelector(store => store.producto)
@@ -10,6 +16,7 @@ const Listar = ({defaultCard = []}) => {
 
     return (
         <div>
+            <h2>{autor().nombre}</h2>
             <h1>Productos CampoStore</h1>
             <Table striped bordered hover>
                 <thead>
@@ -47,8 +54,3 @@ const Listar = ({defaultCard = []}) => {
 }
 
 export default Listar
-
-const cantidad = () => ({
-    nombre: 'jackson'
-})
-export { cantidad }
