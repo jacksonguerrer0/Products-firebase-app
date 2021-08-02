@@ -6,7 +6,7 @@ import { listarProducto } from '../redux/productsDuck'
 const autor = () => ({
     nombre: 'jackson'
 })
-export { cantidad }
+export { autor }
 
 
 const Listar = ({defaultCard = []}) => {
